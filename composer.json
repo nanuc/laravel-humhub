@@ -1,0 +1,30 @@
+{
+    "name": "nanuc/laravel-humhub",
+    "authors": [
+        {
+            "name": "Sebastian Schöps",
+            "email": "sebastian.schoeps@nanuc.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nanuc\\LaravelHumHub\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nanuc\\LaravelHumHub\\LaravelHumHubServiceProvider"
+            ],
+            "aliases": {
+                "Tracker": "Nanuc\\LaravelHumHub\\Facades\\HumHub"
+            }
+        }
+    }
+}
