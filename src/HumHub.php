@@ -23,14 +23,14 @@ class HumHub
         return new Authentication($this->token);
     }
 
-    public function space($token = null): Space
+    public function space(): Space
     {
-        return new Space();
+        return new Space($this->token);
     }
 
-    public function content($token = null): Content
+    public function content(): Content
     {
-        return new Content();
+        return new Content($this->token);
     }
 
     public function topic(): Topic
