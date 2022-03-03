@@ -44,4 +44,14 @@ class Space extends Endpoint
 
         return new SpaceModel(...$values);
     }
+
+    public function addNewUserToSpace($spaceId, $userId)
+    {
+        $this->post($spaceId . '/membership/' . $userId);
+    }
+
+    public function setUserMembershipRole($spaceId, $userId, $role)
+    {
+
+    }
 }

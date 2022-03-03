@@ -7,6 +7,7 @@ use Nanuc\LaravelHumHub\Endpoints\Content;
 use Nanuc\LaravelHumHub\Endpoints\Post;
 use Nanuc\LaravelHumHub\Endpoints\Space;
 use Nanuc\LaravelHumHub\Endpoints\Topic;
+use Nanuc\LaravelHumHub\Endpoints\User;
 
 class HumHub
 {
@@ -21,6 +22,11 @@ class HumHub
     public function authentication(): Authentication
     {
         return new Authentication($this->token);
+    }
+
+    public function user(): User
+    {
+        return new User($this->token);
     }
 
     public function space(): Space

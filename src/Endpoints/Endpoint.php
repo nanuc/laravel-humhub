@@ -4,6 +4,7 @@ namespace Nanuc\LaravelHumHub\Endpoints;
 
 use Illuminate\Support\Facades\Http;
 use Nanuc\LaravelHumHub\Exceptions\HumHubException;
+use Nanuc\LaravelHumHub\Exceptions\HumHubNotFoundException;
 use Nanuc\LaravelHumHub\HumHubResponse;
 use Illuminate\Support\Str;
 
@@ -26,7 +27,7 @@ class Endpoint
         return $this->runRequest('put', $url, $data);
     }
 
-    public function get($url)
+    public function get($url = null)
     {
         return $this->runRequest('get', $url);
     }
@@ -34,6 +35,10 @@ class Endpoint
     public function runRequest($method, $url, $data = null)
     {
         $response = Http::withToken($this->token)->$method($this->getUrl($url), $data);
+
+        if($response->status() == 404) {
+            throw new HumHubNotFoundException();
+        }
 
         if($response->status() > 299) {
             throw new HumHubException(json_encode($response->json()));
